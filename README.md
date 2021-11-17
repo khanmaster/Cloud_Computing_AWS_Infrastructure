@@ -59,9 +59,36 @@ ssh-add "keyfile.pem"
 ![](images/aws_networking_sg1.png)
 
 - 2Tier Achitecture Deployment
+
 ![](images/MicrosoftTeams-image%20(8).png)
 
 
 ### Monitoring
 ![](images/Screenshot%20(157).png)
 
+
+
+### S3
+- `aws s3 ls` to list buckets
+- `aws --version`
+- `aws configure` to add our keys and config 
+- `aws s3 mb s3://name --region name`
+- `aws s3 cp s3://name/ file.md`
+- `aws s3 rm s3://bucketname --recursive`
+- `aws s3 rb s://bucketname`
+- `aws s3 sync s3://bucketname/ test`
+  
+### AWSCLI
+- AWSCLI can be used to create any `aws` resources required
+
+### CD Jenkins
+```
+ssh -A -o "StrictHostKeyChecking=no" ubuntu@34.251.140.216 << EOF	
+
+cd /home/ubuntu/app
+export DB_HOST=db-ip:27017/posts/
+node seeds/seed.js
+nohup node app.js > /dev/null 2>&1 &
+
+EOF
+```
